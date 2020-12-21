@@ -3,6 +3,7 @@ import styled, { css } from 'styled-components/macro';
 import { Link } from 'react-router-dom';
 import { menuData } from '../data/MenuData';
 import { Button } from './Button';
+import { GoThreeBars } from 'react-icons/go'
 
 //Styling of Components 
 // Entire nav component region
@@ -14,7 +15,6 @@ const Nav = styled.nav`
     z-index: 100;
     position: fixed;
     width: 100%;
-    background: red;
 `;
 
 // links of a navbar (right side)
@@ -35,12 +35,31 @@ const Logo = styled(Link)`
     font-size: 30px;
 `;
 
-const MenuBars = styled.i``;
+const MenuBars = styled(GoThreeBars)`
+    display: none;
+
+    @media screen and (max-width: 900px) {
+        display: block;
+        background-image: url(${GoThreeBars});
+        background-size: contain;
+        height: 40px;
+        width: 40px;
+        cursor: pointer;
+        position: absolute;
+        top: 0;
+        right: 0;
+        transform: translate(-50%, 35%);
+    }
+`;
 
 const NavMenu = styled.div`
     display: flex;
     align-items: center;
     margin-right: -48px;
+
+    @media screen and (max-width: 768px) {
+        display: none;
+    }
 `;
 
 const NavMenuLinks = styled(Link)`
@@ -52,12 +71,16 @@ const NavBtn = styled.div`
     display: flex;
     align-items: center;
     margin-right: 24px;
+
+    @media screen and (max-width: 768px) {
+        display: none;
+    }
 `;
 
 const Navbar = () => {
     return (
         <Nav>
-            <Logo to="/">SYDAN</Logo>
+            <Logo to="/">DMAGMA</Logo>
             <MenuBars />
             <NavMenu>
                 {menuData.map((item, index) => (
@@ -72,7 +95,7 @@ const Navbar = () => {
                 </Button>
             </NavBtn>
         </Nav>
-    )
-}
+    );
+};
 
 export default Navbar;
