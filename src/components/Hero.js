@@ -24,7 +24,9 @@ const HeroWrapper = styled.div`
 const HeroSlide = styled.div`
     z-index: 1;
     width: 100%;
-    height: 100%;`;
+    height: 100%;
+`;
+
 const HeroSlider = styled.div`
     position: absolute;
     top: 0;
@@ -61,7 +63,25 @@ const HeroImage = styled.img`
     height: 100vh;
     object-fit: cover;
 `;
-const HeroContent = styled.div``;
+const HeroContent = styled.div`
+    position: relative;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    margin-top: 20rem;
+    max-width: 1600px;
+    width: calc(100% - 100px);
+    color: #fff;
+
+    h1 {
+        font-size: clamp(1rem, 8vw, 2rem);
+        font-weight: 400;
+        text-transform: uppercase;
+        text-shadow: 0px 0px 50px rgba(0,0,0,0.4);
+        text-align: left;
+        margin-bottom: 0.5rem;
+    }
+`;
 const Arrow = styled(IoMdArrowRoundForward)``;
 
 const SliderButtons = styled.div`
@@ -114,7 +134,7 @@ const Hero = ({ slides }) => {
                                                 to={slide.path} 
                                                 primary="true"
                                                 css={`
-                                                    max-width: 80px
+                                                    max-width: 180px
                                                 `}
                                             >
                                                 {slide.label}
