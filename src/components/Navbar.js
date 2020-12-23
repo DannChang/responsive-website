@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components/macro';
 import { Link } from 'react-router-dom';
 import { menuData } from '../data/MenuData';
 import { Button } from './Button';
-import { GoThreeBars } from 'react-icons/go'
+import { FaBars } from 'react-icons/fa'
 
 //Styling of Components 
 // Entire nav component region
@@ -35,12 +35,12 @@ const Logo = styled(Link)`
     font-size: 30px;
 `;
 
-const MenuBars = styled(GoThreeBars)`
+const MenuBars = styled(FaBars)`
     display: none;
 
     @media screen and (max-width: 900px) {
         display: block;
-        background-image: url(${GoThreeBars});
+        background-image: url(${FaBars});
         background-size: contain;
         height: 40px;
         width: 40px;
@@ -77,11 +77,11 @@ const NavBtn = styled.div`
     }
 `;
 
-const Navbar = () => {
+const Navbar = ({ toggle }) => {
     return (
         <Nav>
             <Logo to="/">DMAGMA</Logo>
-            <MenuBars />
+            <MenuBars onClick={toggle}/>
             <NavMenu>
                 {menuData.map((item, index) => (
                     <NavMenuLinks to={item.link} key={index}>
